@@ -38,4 +38,8 @@ Köszönjük, hogy használja a Comproller alkalmazást! A fejlesztésekkel kapc
 
 ## Készítette
 
-## **Kiss Bercel** | **Papp Gyula** | **Németh Gábor**
+<div align="center">
+<b>Kiss Bercel</b> | <b>Papp Gyula</b> | <b>Németh Gábor</b>
+</div>
+
+---
