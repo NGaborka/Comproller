@@ -33,3 +33,9 @@ A **Comproller** működéséhez az alábbiak szükségesek:
 ---
 
 Köszönjük, hogy használja a Comproller alkalmazást! A fejlesztésekkel kapcsolatos javaslatokat és hibajelentéseket örömmel fogadjuk.
+
+---
+
+## Készítette
+
+**Kiss Bercel** **Papp Gyula** **Németh Gábor**
