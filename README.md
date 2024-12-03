@@ -1,6 +1,6 @@
-<div align="center">
-<h2>Comproller</h2>
-</div>
+## Compeoller
+
+---
 
 ## Programról
 A **Comproller**, másnéven *company controller*, egy olyan program, amely képes kezelni egy vállalat HR-, pénzügyi és egyéb menedzsmenttel kapcsolatos feladatait.
