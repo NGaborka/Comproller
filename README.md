@@ -28,7 +28,7 @@ A rendszergazda teljes jogosultsággal rendelkezik a program moduljainak kezelé
 A **Comproller** működéséhez az alábbiak szükségesek:
 
 1. **Belső hálózat vagy webszerver**: Az alkalmazás futtatásához szükséges egy belső hálózati környezet vagy egy webszerver.
-2. **Adatbázis**: A program adatok tárolásához és kezeléséhez egy megfelelően konfigurált adatbázis szükséges.
+2. **Adatbázis**: A program adatok tárolásához és kezeléséhez az alkalmazáshoz konfigurált adatbázis szükséges.
 
 ---
 
