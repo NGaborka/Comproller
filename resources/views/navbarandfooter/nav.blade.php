@@ -36,18 +36,62 @@
           <a class="nav-link" aria-current="page" href="/">Kezdőlap</a>
         </li>
         @endguest
-        @role('hr')
-        <li class="nav-item">
-          <a class="nav-link" href="#">HR</a>
-        </li>
-        @endrole
-        @role('pu')
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pénzügy</a>
-        </li>
-        @endrole
+        @auth
+          @role('hr','admin')
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/">Irányítópult</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Menedzsment
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/nyilvantartas">Nyilvántartás</a></li>
+              <li><a class="dropdown-item" href="/muszakok-kezelese">Műszakok kezelése</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/munkaido-nyilvantartas">Munkaidő nyilvántartás</a></li>
+              <li><a class="dropdown-item" href="/szamfejtes">Számfejtés</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/hrdokumentumok">Dokumentumok</a>
+          </li>
+          @endrole
+          @role('pu','admin')
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/iranyitopult">Irányítópult</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Pénzügyek
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/szamlazas">Számlázás</a></li>
+              <li><a class="dropdown-item" href="/penzugyi-tranzakciok">Pénzügyi tranzakciók</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/koltsegvetes">Költségvetés és tervezés</a></li>
+              <li><a class="dropdown-item" href="/jelentesek">Jelentések és elemzések</a></li>
+              <li><a class="dropdown-item" href="/adozas">Adózás és megfelelőség</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Befektetések és eszközök
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/befektetesek">Befektetéskezelés</a></li>
+              <li><a class="dropdown-item" href="/eszkozmenedzsment">Készlet- és eszközmenedzsment</a></li>
+              <li><a class="dropdown-item" href="/kockazatkezeles">Kockázatkezelés</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/pudokumentumok">Dokumentumok</a>
+          </li>
+          @endrole
+        @endauth
       </ul>
     </div>
+    @auth
     <div class="dropdown">
       <button class="dropdown-icon-btn" id="iconDropdown" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="bi bi-arrow-down-circle"></i>
@@ -57,7 +101,8 @@
         <li><a class="dropdown-item" href="#">Beállítások</a></li>
         <li><a class="dropdown-item" href="#">Kijelentkezés</a></li>
       </ul>
-    </div>    
+    </div>
+    @endauth  
   </div>
 </nav>
 </body>
