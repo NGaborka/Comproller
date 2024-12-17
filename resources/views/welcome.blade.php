@@ -131,14 +131,15 @@
     <div class="slideshow-container">
         <h1>Comproller</h1>
         <div class="slide active">
-            <img src="kepek/kep1.jpg" alt="Első kép">
+            <img src="{{ asset('kepek/kep1.jpg') }}" alt="Első kép">
         </div>
         <div class="slide">
-            <img src="kepek/kep2.jpg" alt="Második kép">
+            <img src="{{ asset('kepek/kep2.jpg') }}" alt="Második kép">
         </div>
         <div class="slide">
-            <img src="kepek/kep3.jpg" alt="Harmadik kép">
+            <img src="{{ asset('kepek/kep3.jpg') }}" alt="Harmadik kép">
         </div>
+
 
         <div class="navigacio">
             <a href="#" class="elozo" onclick="valtas_irany(-1)">&#10094;</a>
