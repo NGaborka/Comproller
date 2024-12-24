@@ -1,210 +1,222 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comproller Alpha 0.0.01</title>
-    <link href="{{ asset('css/bootstrap-5.3.3/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="kepek/icon.png">
+    <title>Comproller</title>
     <style>
 
-    :root 
-    {
-        --primary-color: #ff4500;
-        --secondary-color: rgba(0,0,0,0.7);
-        --transition-speed: 0.8s;
-    }
+        body 
+        {
+            font-family: Arial, sans-serif;
+        }
 
-    body 
-    {
-        background-color: #2c3e50;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        overflow: hidden;
-    }
+        #nav 
+        {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #007acc;
+            padding: 5px;
+            border-radius: 30px;
+        }
+        #nav a 
+        {
+            color: white;
+            text-decoration: none;
+            padding: 5px 15px;
+        }
+        #nav a:hover 
+        {
+            background-color: #005f99;
+        }
 
-    .slideshow-container 
-    {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        width: 100%;
-        height: 100%;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        z-index: 1;
-    }
+        #profilkep       
+        {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
 
-    .slide 
-    {
-        position: absolute;
-        width: 100%;
-        height: 50%;
-        opacity: 0;
-        transition: opacity var(--transition-speed) ease-in-out,
-                    transform var(--transition-speed) ease-in-out;
-        transform: scale(0.9) rotateY(45deg);
-    }
+        #container 
+        {
+            padding: 32px;
+            text-align: center;
+        }
 
-    .slide.active 
-    {
-        opacity: 1;
-        transform: scale(1) rotateY(0);
-        z-index: 1;
-    }
+        h1 
+        {
+            color: #007acc;
+        }
 
-    .slide img 
-    {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+        .vetites 
+        {
+            width: 80%;
+            max-width: 600px;
+            margin: 16px auto;
+            border: 2px solid #007acc;
+            border-radius: 8px;
+        }
 
-    #szoveg 
-    {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 80%;
-        background-color: var(--secondary-color);
-        color: var(--primary-color);
-        padding: 15px;
-        border-radius: 10px;
-        text-align: center;
-        backdrop-filter: blur(10px);
-        z-index: 2;
-        transition: transform 300ms ease-out;
-    }
+        .vetites img 
+        {
+            width: 100%;
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
 
-    #szoveg:hover 
-    {
-        transform: translate(-50%, -50%) scale(1.05);
-    }
+        .vetites img.aktiv
+        {
+            display: block;
+            opacity: 1;
+        }
 
-    .navigacio 
-    {
-        display: flex;
-        justify-content: space-between;
-        position: absolute;
-        top: 50%;
-        width: 100%;
-        z-index: 3;
-    }
+        #leiras 
+        {
+            color: #333;
+        }
 
-    .elozo, .kovetkezo 
-    {
-        background: var(--secondary-color);
-        color: white;
-        padding: 15px 20px;
-        text-decoration: none;
-        transition: background 0.3s ease;
-        backdrop-filter: blur(5px);
-    }
+        #extra
+        {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 400px;
+            align-items: flex-start;
+            margin-top: 32px;
+        }
 
-    .elozo:hover, .kovetkezo:hover 
-    {
-        background: rgba(0, 0, 0, 0.9);
-    }
+        #extra img 
+        {
+            max-width: 300px;
+            border: 2px solid #007acc;
+            border-radius: 8px;
+        }
 
-    h1
-    {
+        #extra #szoveg 
+        {
+            max-width: 600px;
+            text-align: left;
+            margin-left: 32px;
+        }
 
-        font-size: 30px;
-        text-align: center;
-        color: orangered;
-        z-index: 3;
-        margin-bottom: 600px;
-        font-family: Arial;
-        
-    }
+        #also
+        {
+            background-color: #007acc;
+            color: white;
+            padding: 16px;
+            text-align: center;
+            border-radius: 30px;
+        }
+
+        #also a 
+        {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+        }
+
+        #also a:hover 
+        {
+            background-color: #005f99;
+        }
+
+        #felgomb 
+        {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #007acc;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #felgomb:hover 
+        {
+            background-color: #005f99;
+        }
 
     </style>
 </head>
 <body>
-    @include('navbarandfooter.nav')
-    <script src="{{ asset('css/bootstrap-5.3.3/js/bootstrap.bundle.min.js')}}" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <div class="slideshow-container">
-        <h1>Comproller</h1>
-        <div class="slide active">
-            <img src="{{ asset('kepek/kep1.jpg') }}" alt="Első kép">
-        </div>
-        <div class="slide">
-            <img src="{{ asset('kepek/kep2.jpg') }}" alt="Második kép">
-        </div>
-        <div class="slide">
-            <img src="{{ asset('kepek/kep3.jpg') }}" alt="Harmadik kép">
-        </div>
 
-
-        <div class="navigacio">
-            <a href="#" class="elozo" onclick="valtas_irany(-1)">&#10094;</a>
-            <a href="#" class="kovetkezo" onclick="valtas_irany(1)">&#10095;</a>
-        </div>
-
-        <p id="szoveg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut felis nisi. In ullamcorper, tellus in vehicula lobortis, massa sem maximus purus, 
-            vel bibendum eros nulla non quam. Fusce mollis, ex eu lobortis elementum, lorem neque efficitur nisi, a porta ante odio ac turpis. 
-            Donec sed viverra massa, sed commodo risus.
-        </p>
+<nav id="nav">
+    <a href="index.html">Kezdőlap</a>
+    <a href="rolunk.html">Rólunk</a>
+    <a href="kapcsolat.html">Kapcsolat</a>
+    <a href="profil.html">Profil</a>
+    <div>
+        <img src="kepek/felhasznalo.JPG" id="profilkep">
     </div>
-    @include('navbarandfooter.footer')
-    <script>
+</nav>
+<div id="container">
+    <h1>Üdvözöljük a Comproller oldalján!</h1>
+    <p>Ez az oldal segít a cég menedzselésében és a fontos információk kezelésében.</p>
+    <div class="vetites">
+        <img src="kepek/kep1.jpg" class="aktiv"> 
+        <img src="kepek/kep2.jpg">
+        <img src="kepek/kep3.jpg">
+    </div>
+    <div id="leiras">
+        <p>Itt találhatók a legfrissebb hírek és információk a cégünkről. Maradjon naprakész a legújabb fejlesztésekkel és eseményekkel kapcsolatban.</p>
+    </div>
 
-        let aktualis_index = 0;
-        let slideok = document.getElementsByClassName("slide");
-        let idozito;
+    <div id="extra">
+        <div>
+            <img src="kepek/ceg.jpg">
+            <div id="szoveg">
+                <h2>Cégünk története</h2>
+                <p>Cégünk több mint 20 éve van jelen a piacon, és elkötelezettek vagyunk a minőségi szolgáltatások nyújtása iránt. Innovatív megoldásainkkal és szakértő csapatunkkal segítjük ügyfeleinket a siker elérésében.</p>
+                <p>Folyamatosan fejlődünk és bővítjük szolgáltatásainkat, hogy megfeleljünk a változó piaci igényeknek. Célunk, hogy hosszú távú, sikeres együttműködést alakítsunk ki partnereinkkel.</p>
+            </div>
+        </div>
+        <div>
+            <img src="kepek/leiras.jpg">
+            <div id="szoveg">
+                <h2>Megbízhatóságunk</h2>
+                <p>Cégünk egyik legfontosabb értéke a megbízhatóság. Mindig arra törekszünk, hogy ügyfeleink elvárásainak megfeleljünk, és biztosítsuk számukra a legmagasabb szintű szolgáltatást.</p>
+                <p>Proaktív szemléletmóddal és precíz munkavégzéssel dolgozunk, hogy hosszú távú, eredményes kapcsolatokat alakítsunk ki ügyfeleinkkel.</p>
+            </div>
+        </div>
+    </div>
+    <a href="#" id="felgomb">Vissza a tetejére</a>
+</div>
 
-        function kezdeti_slideshow() 
+<div id="also">
+    <a href="#">Adatvédelmi nyilatkozat</a>
+    <a href="#">Felhasználási feltételek</a>
+    <a href="#">Kapcsolat</a>
+</div>
+
+<script>
+
+    let profilkep = document.getElementById("profilkep");
+
+    window.onload = function() 
+    {
+        let eleres = sessionStorage.getItem("profilkep");
+        if (eleres) 
         {
-            for (let i = 0; i < slideok.length; i++) 
-            {
-                slideok[i].classList.remove("active");
-            }
-            
-            aktualis_index++;
-            
-            if (aktualis_index >= slideok.length) 
-            {
-                aktualis_index = 0;
-            }
-            
-            slideok[aktualis_index].classList.add("active");
-            
-            idozito = setTimeout(kezdeti_slideshow, 5000);
+            profilkep.src = eleres;
         }
+        kovetkezo();
+    };
 
-        function valtas_irany(irany) 
-        {
-            clearTimeout(idozito);
-            
-            for (let i = 0; i < slideok.length; i++) 
-            {
-                slideok[i].classList.remove("active");
-            }
-            
-            aktualis_index += irany;
-            
-            if (aktualis_index >= slideok.length) 
-            {
-                aktualis_index = 0;
-            }
-            
-            if (aktualis_index < 0) 
-            {
-                aktualis_index = slideok.length - 1;
-            }
-            
-            slideok[aktualis_index].classList.add("active");
-            
-            idozito = setTimeout(kezdeti_slideshow, 5000);
-        }
+    let jelenlegi = 0;
+    let kepek = document.querySelectorAll('.vetites img');
+    function kovetkezo()   
+    {
+        kepek[jelenlegi].classList.remove('aktiv');
+        jelenlegi = (jelenlegi + 1) % kepek.length;
+        kepek[jelenlegi].classList.add('aktiv');
+    }
 
-        document.addEventListener("DOMContentLoaded", kezdeti_slideshow);
-    </script>
+    setInterval(kovetkezo, 3000);
+
+</script>
+
 </body>
 </html>
