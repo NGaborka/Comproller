@@ -144,10 +144,11 @@
 <body>
 
 <nav id="nav">
-    <a href="index.html">Kezdőlap</a>
-    <a href="rolunk.html">Rólunk</a>
-    <a href="kapcsolat.html">Kapcsolat</a>
-    <a href="profil.html">Profil</a>
+    <a href="{{ url('/') }}">Kezdőlap</a>
+    <a href="{{ url('/rolunk') }}">Rólunk</a>
+    <a href="{{ url('/kapcsolat') }}">Kapcsolat</a>
+    <a href="{{ url('/profil') }}">Profil</a>
+    <a href="{{ url('/dolgozok') }}">Dolgozók</a>
     <div>
         <img src="kepek/felhasznalo.JPG" id="profilkep">
     </div>
