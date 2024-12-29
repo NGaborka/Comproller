@@ -68,7 +68,7 @@
         {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 400px;
+            gap: 20px;
             align-items: flex-start;
             margin-top: 32px;
         }
@@ -174,6 +174,31 @@
                 </p>
 
             </div>
+        </div>
+        <div>
+            <h2>Céges adatok:</h2>
+            <table border="1" cellpadding="8" cellspacing="0" style="width: 100%; text-align: left;">
+                <thead>
+                    <tr>
+                        <th>Kategória</th>
+                        <th>Érték</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dolgozók száma</td>
+                        <td>{{ $dolgozok->count() }}</td>
+                    </tr>
+                    <tr>
+                        <td>Havi cégkereslet</td>
+                        <td>1,200,000 HUF</td>
+                    </tr>
+                    <tr>
+                        <td>EUR-HUF valutaárfolyam</td>
+                        <td>387.45 HUF</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <a href="#" id="felgomb">Vissza a tetejére</a>

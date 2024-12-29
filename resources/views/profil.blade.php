@@ -82,6 +82,27 @@
             border: 2px solid white;
         }
 
+        .input_csoport
+        {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .input_csoport label 
+        {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .input_csoport input, .input_csoport select 
+        {
+            width: 80%;
+            padding: 8px;
+            border: 2px solid #007acc;
+            border-radius: 5px;
+        }
+
     </style>
 </head>
 <body>
@@ -99,38 +120,96 @@
 <div id="profil_container">
     <h1>Profilkép beállítása</h1>
     <input type="file" id="file_input" accept="image/*">
+
+    <div class="input_csoport">
+        <label for="nev">Teljes név:</label>
+        <input type="text" id="nev" placeholder="Teljes név">
+    </div>
+    <div class="input_csoport">
+        <label for="szuletesi_ev">Születési év:</label>
+        <input type="number" id="szuletesi_ev" placeholder="Születési év">
+    </div>
+    <div class="input_csoport">
+        <label for="email">Email:</label>
+        <input type="text" id="email" placeholder="Email">
+    </div>
+    <div class="input_csoport">
+        <label for="telefonszam">Telefonszám:</label>
+        <input type="text" id="telefonszam" placeholder="Telefonszám">
+    </div>
+    <div class="input_csoport">
+        <label for="nem">Nem:</label>
+        <select id="nem">
+            <option value="">Válasszon nemet</option>
+            <option value="ferfi">Férfi</option>
+            <option value="no">Nő</option>
+            <option value="egyeb">Egyéb</option>
+        </select>
+    </div>
+    <div class="input_csoport">
+        <label for="nemzetiseg">Nemzetiség:</label>
+        <input type="text" id="nemzetiseg" placeholder="Nemzetiség">
+    </div>
+    <button id="mentes">Mentés</button>
 </div>
 
 <script>
 
-    window.onload = function() 
-    {
-        if (sessionStorage.getItem("profilkep")) 
-        {
-            document.getElementById("profilkep").src = sessionStorage.getItem("profilkep");
-        }
-    };
-
+    let profilkep = document.getElementById("profilkep");
     let file_input = document.getElementById("file_input");
+    let mentes = document.getElementById("mentes");
+
+    window.onload = function () 
+    {
+        let kep = sessionStorage.getItem("profilkep");
+        if (kep) profilkep.src = kep;
+
+        let id_tomb = ["nev", "szuletesi_ev", "email", "telefonszam", "nem", "nemzetiseg"];
+        id_tomb.forEach(function (id) 
+        {
+            let elem = document.getElementById(id);
+            let ertek = sessionStorage.getItem(id);
+            if (ertek) elem.value = ertek;
+        });
+    };
 
     file_input.onchange = function () 
     {
         let file = file_input.files[0];
-        let reader = new FileReader();
-        reader.onload = function (i) 
-        {
-            document.getElementById("profilkep").src = i.target.result;
-            sessionStorage.setItem("profilkep", i.target.result);
-            alert("A profilkép sikeresen mentve!");
-        };
-        if (file) 
-        {
+        if (file) {
+            let reader = new FileReader();
+            reader.onload = function (esemeny) 
+            {
+                profilkep.src = esemeny.target.result;
+                sessionStorage.setItem("profilkep", esemeny.target.result);
+            };
             reader.readAsDataURL(file);
         }
     };
 
-</script>
+    mentes.onclick = function () 
+    {
+        let id_tomb = ["nev", "szuletesi_ev", "email", "telefonszam", "nem", "nemzetiseg"];
+        let valid = true;
 
+        id_tomb.forEach(function (id) 
+        {
+            let elem = document.getElementById(id);
+            if (!elem.value.trim()) 
+            {
+                valid = false;
+                alert(`A(z) ${id} mező kitöltése kötelező!`);
+            } 
+            else 
+            {
+                sessionStorage.setItem(id, elem.value.trim());
+            }
+        });
+
+        if (valid) alert("Az adatok sikeresen mentve!");
+    };
+
+</script>
 
 </body>
 </html>

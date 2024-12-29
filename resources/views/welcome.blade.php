@@ -139,6 +139,62 @@
             background-color: #005f99;
         }
 
+        #naptar_container 
+        {
+            max-width: 600px;
+            margin: 32px auto;
+            padding: 20px;
+            background-color: white;
+            border: 2px solid #007acc;
+            border-radius: 8px;
+        }
+
+        #naptar_fejlec 
+        {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #naptar_tabla 
+        {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #naptar_tabla th 
+        {
+            background-color: #007acc;
+            color: white;
+            padding: 10px;
+        }
+
+        #naptar_tabla td 
+        {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        #naptar_tabla td:hover 
+        {
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+
+        .aktualis_nap 
+        {
+            background-color: #007acc;
+            color: white;
+            border-radius: 50%;
+        }
+
+        .masik_honap 
+        {
+            color: #999;
+        }
+
     </style>
 </head>
 <body>
@@ -183,6 +239,30 @@
             </div>
         </div>
     </div>
+
+    <div id="naptar_container">
+        <div id="naptar_fejlec">
+            <button onclick="honap_valt(-1)">Előző</button>
+            <h2 id="aktualis_datum"></h2>
+            <button onclick="honap_valt(1)">Következő</button>
+        </div>
+        <table id="naptar_tabla">
+            <thead>
+                <tr>
+                    <th>H</th>
+                    <th>K</th>
+                    <th>Sze</th>
+                    <th>Cs</th>
+                    <th>P</th>
+                    <th>Szo</th>
+                    <th>V</th>
+                </tr>
+            </thead>
+            <tbody id="naptar_test">
+            </tbody>
+        </table>
+    </div>
+
     <a href="#" id="felgomb">Vissza a tetejére</a>
 </div>
 
@@ -204,6 +284,7 @@
             profilkep.src = eleres;
         }
         kovetkezo();
+        naptar_inditas();
     };
 
     let jelenlegi = 0;
@@ -216,6 +297,79 @@
     }
 
     setInterval(kovetkezo, 3000);
+
+    let aktualis_datum = new Date();
+    let kivalasztott_datum = aktualis_datum;
+
+    function naptar_inditas() 
+    {
+        naptar_frissites();
+    }
+
+    function naptar_frissites() 
+    {
+        let datum_kijelzo = document.getElementById('aktualis_datum');
+        datum_kijelzo.textContent = `${kivalasztott_datum.getFullYear()}. ${kivalasztott_datum.getMonth() + 1}. hónap`;
+
+        let naptar_test = document.getElementById('naptar_test');
+        naptar_test.innerHTML = '';
+
+        let elso_nap = new Date(kivalasztott_datum.getFullYear(), kivalasztott_datum.getMonth(), 1);
+        let utolso_nap = new Date(kivalasztott_datum.getFullYear(), kivalasztott_datum.getMonth() + 1, 0);
+
+        let aktualis_sor = document.createElement('tr');
+        let nap_szam = 1;
+        let elso_nap_index = elso_nap.getDay() || 7;
+
+        for (let i = 1; i < elso_nap_index; i++) 
+        {
+            let ures_cella = document.createElement('td');
+            let elozo_honap_utolso = new Date(kivalasztott_datum.getFullYear(), kivalasztott_datum.getMonth(), 0);
+            let elozo_nap = elozo_honap_utolso.getDate() - (elso_nap_index - i - 1);
+            ures_cella.textContent = elozo_nap;
+            ures_cella.classList.add('masik_honap');
+            aktualis_sor.appendChild(ures_cella);
+        }
+
+        while (nap_szam <= utolso_nap.getDate()) 
+        {
+            if (aktualis_sor.children.length === 7) 
+            {
+                naptar_test.appendChild(aktualis_sor);
+                aktualis_sor = document.createElement('tr');
+            }
+
+            let nap_cella = document.createElement('td');
+            nap_cella.textContent = nap_szam;
+
+            if (kivalasztott_datum.getFullYear() === aktualis_datum.getFullYear() &&
+                kivalasztott_datum.getMonth() === aktualis_datum.getMonth() &&
+                nap_szam === aktualis_datum.getDate()) 
+            {
+                nap_cella.classList.add('aktualis_nap');
+            }
+
+            aktualis_sor.appendChild(nap_cella);
+            nap_szam++;
+        }
+
+        let kovetkezo_honap_nap = 1;
+        while (aktualis_sor.children.length < 7) 
+        {
+            let ures_cella = document.createElement('td');
+            ures_cella.textContent = kovetkezo_honap_nap++;
+            ures_cella.classList.add('masik_honap');
+            aktualis_sor.appendChild(ures_cella);
+        }
+
+        naptar_test.appendChild(aktualis_sor);
+    }
+
+    function honap_valt(lepes) 
+    {
+        kivalasztott_datum = new Date(kivalasztott_datum.getFullYear(), kivalasztott_datum.getMonth() + lepes, 1);
+        naptar_frissites();
+    }
 
 </script>
 
