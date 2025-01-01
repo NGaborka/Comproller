@@ -258,7 +258,7 @@
                     <th>V</th>
                 </tr>
             </thead>
-            <tbody id="naptar_test">
+            <tbody id="naptar_body">
             </tbody>
         </table>
     </div>
@@ -311,8 +311,8 @@
         let datum_kijelzo = document.getElementById('aktualis_datum');
         datum_kijelzo.textContent = `${kivalasztott_datum.getFullYear()}. ${kivalasztott_datum.getMonth() + 1}. hónap`;
 
-        let naptar_test = document.getElementById('naptar_test');
-        naptar_test.innerHTML = '';
+        let naptar_body = document.getElementById('naptar_body');
+        naptar_body.innerHTML = '';
 
         let elso_nap = new Date(kivalasztott_datum.getFullYear(), kivalasztott_datum.getMonth(), 1);
         let utolso_nap = new Date(kivalasztott_datum.getFullYear(), kivalasztott_datum.getMonth() + 1, 0);
@@ -335,7 +335,7 @@
         {
             if (aktualis_sor.children.length === 7) 
             {
-                naptar_test.appendChild(aktualis_sor);
+                naptar_body.appendChild(aktualis_sor);
                 aktualis_sor = document.createElement('tr');
             }
 
@@ -362,7 +362,7 @@
             aktualis_sor.appendChild(ures_cella);
         }
 
-        naptar_test.appendChild(aktualis_sor);
+        naptar_body.appendChild(aktualis_sor);
     }
 
     function honap_valt(lepes) 

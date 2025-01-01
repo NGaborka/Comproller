@@ -7,6 +7,14 @@
     <title>Dolgozók</title>
     <style>
 
+        table
+        {
+
+            width: 100%; 
+            text-align: left;
+
+        }
+
         body 
         {
             font-family: Arial, sans-serif;
@@ -148,7 +156,7 @@
                 <h2>Jelenlegi dolgozóink adatai:</h2>
                 <p>
 
-                    <table border="1" cellpadding="8" cellspacing="0" style="width: 100%; text-align: left;">
+                    <table border="1" cellpadding="8" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>Dolgozó ID</th>
@@ -177,7 +185,7 @@
         </div>
         <div>
             <h2>Céges adatok:</h2>
-            <table border="1" cellpadding="8" cellspacing="0" style="width: 100%; text-align: left;">
+            <table border="1" cellpadding="8" cellspacing="0">
                 <thead>
                     <tr>
                         <th>Kategória</th>
