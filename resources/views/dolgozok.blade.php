@@ -1,162 +1,206 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
-    <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="kepek/icon.png">
-    <title>Dolgozók</title>
+
+    <title>Comproller - Rólunk</title>
+
     <style>
 
-        table
+        *
         {
 
-            width: 100%; 
-            text-align: left;
+            text-decoration: none;
 
         }
 
-        body 
+        #jprofil
         {
-            font-family: Arial, sans-serif;
+
+            border: none;
+            width: 100px;
+            height: 100px;
+            border-radius: 60px;
+            cursor: none;
+
+        }
+
+        #fel
+        {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            width: 20%;
+            padding: 20px;
+
+        }
+
+        #nav_logo
+        {
+
+            border: none;
+            width: 100px;
+            height: 100px;
+            border-radius: 60px;
+            cursor: none;
+
+        }
+
+        #nav_icon
+        {
+
+            width: 40px;
+            height: 40px;
+            border: 2px solid black;
+            border-radius: 60px;
+
+        }
+
+        body
+        {
+
+            background-image: url("kepek/hatterek/hatter.jpg");
+            background-repeat: no-repeat;
+            background-color: grey;
+            font-family: arial;
+            color: red;
+
         }
 
         img
         {
 
+            border-radius: 30px;
             width: 15%;
-            height: 15%;
+            height: auto;
+            border: 2px solid black;
+            transition: transform 1.1;
 
         }
 
-        #nav 
+        img:hover
         {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #007acc;
-            padding: 5px;
-            border-radius: 30px;
-        }
-        #nav a 
-        {
-            color: white;
-            text-decoration: none;
-            padding: 5px 15px;
-        }
-        #nav a:hover 
-        {
-            background-color: #005f99;
+
+            transform: scale(1.05);            
+
         }
 
-        #profilkep       
+        #kozepre
         {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            border: 2px solid white;
-        }
 
-        #container 
-        {
-            padding: 32px;
-            text-align: center;
-        }
-
-        h1 
-        {
-            color: #007acc;
-        }
-
-        #leiras 
-        {
-            color: #333;
-        }
-
-        #extra
-        {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            align-items: flex-start;
-            margin-top: 32px;
+            place-items: center;
+
         }
 
-        #extra img 
+        #leiras
         {
-            max-width: 300px;
-            border: 2px solid #007acc;
-            border-radius: 8px;
+
+            background-color: rgba(255, 255, 255, 0.623);
+            border-radius: 10px;
+            font-size: 20px;
+            padding: 10px;
+            display: grid;
+            justify-items: left;
+            align-items: left;
+            gap: 5px;
+
         }
 
-        #extra #szoveg 
+        nav,#footer
         {
-            max-width: 600px;
-            text-align: left;
-            margin-left: 32px;
+
+            background-color: rgba(255, 255, 255, 0.623);
+            border-radius: 10px;
+            font-size: 13px;
+            padding: 10px;
+
         }
 
-        #also
+        nav
         {
-            background-color: #007acc;
-            color: white;
-            padding: 16px;
+
+            width: 90%;
+            display:flex;
+            justify-content: space-between;
             text-align: center;
+
+        }
+
+        table
+        {
+
+            border: 2px solid black;
+
+        }
+
+        #jdatum,#jido
+        {
+
+            background-color:rgba(182, 208, 226, 0.47);
+            border-radius: 40px;
+
+        }
+
+        #datumok
+        {
+
+            background-image: url("kepek/datum.PNG");
+            width: 40%;
+            height: 60%;
+            text-align: center;
+            color: black;
+            border-radius: 10px;
+            font-size: 30px;
+            padding: 30px;
+            border: 2px solid black;
+
+        }
+
+        button
+        {
+
+            background-color: black;
             border-radius: 30px;
-        }
-
-        #also a 
-        {
+            opacity: 0.5;
             color: white;
-            text-decoration: none;
-            padding: 8px 16px;
-        }
-
-        #also a:hover 
-        {
-            background-color: #005f99;
-        }
-
-        #felgomb 
-        {
-            display: inline-block;
-            padding: 8px 16px;
-            background-color: #007acc;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
+            font-size: 20px;
             cursor: pointer;
-        }
+            padding: 15px;
 
-        #felgomb:hover 
-        {
-            background-color: #005f99;
         }
 
     </style>
+
 </head>
+
 <body>
 
-<nav id="nav">
-    <a href="{{ url('/') }}">Kezdőlap</a>
-    <a href="{{ url('/rolunk') }}">Rólunk</a>
-    <a href="{{ url('/kapcsolat') }}">Kapcsolat</a>
-    <a href="{{ url('/profil') }}">Profil</a>
-    <a href="{{ url('/dolgozok') }}">Dolgozók</a>
-    <div>
-        <img src="kepek/felhasznalo.JPG" id="profilkep">
-    </div>
-</nav>
-<div id="container">
-    <h1>Dolgozók</h1>
-    <img src="kepek/dolgozo.png">
+    <div id="kozepre">
 
-    <div id="extra">
-        <div>
-            <div id="szoveg">
+        <nav>
+            <a><img src="kepek/nav_iconok/nav_logo.PNG" id="nav_logo"><br></a>
+            <a href="{{ url('/') }}"> <img src="kepek/nav_iconok/fooldal.png" id="nav_icon"><br>Főloldal</a> 
+            <a href="{{ url('/kapcsolat') }}"> <img src="kepek/nav_iconok/telefon.png" id="nav_icon"><br>Kapcsolat</a> 
+            <a href="{{ url('/profil') }}"> <img src="kepek/nav_iconok/profil.png" id="nav_icon"><br>Profil</a> 
+            <a href="{{ url('/rolunk') }}"> <img src="kepek/nav_iconok/rolunk.png" id="nav_icon"><br>Rólunk</a> 
+            <a href="{{ url('/dolgozok') }}"> <img src="kepek/nav_iconok/dolgozok.png" id="nav_icon"><br>Dolgozók</a>
+            <a><img src="kepek/nav_iconok/felhasznalo.PNG" id="jprofil"><br></a>
+        </nav>
+
+        <p>---</p>
+
+        <div id="leiras">
+
                 <h2>Jelenlegi dolgozóink adatai:</h2>
                 <p>
 
-                    <table border="1" cellpadding="8" cellspacing="0">
+                    <table>
                         <thead>
                             <tr>
                                 <th>Dolgozó ID</th>
@@ -181,58 +225,94 @@
 
                 </p>
 
-            </div>
+                <h2>Céges adatok:</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Kategória</th>
+                            <th>Érték</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Dolgozók száma</td>
+                            <td>{{ $dolgozok->count() }}</td>
+                        </tr>
+                        <tr>
+                            <td>Havi cégkereslet</td>
+                            <td>1,200,000 HUF</td>
+                        </tr>
+                        <tr>
+                            <td>EUR-HUF valutaárfolyam</td>
+                            <td>387.45 HUF</td>
+                        </tr>
+                    </tbody>
+                </table>
+
         </div>
-        <div>
-            <h2>Céges adatok:</h2>
-            <table border="1" cellpadding="8" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>Kategória</th>
-                        <th>Érték</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Dolgozók száma</td>
-                        <td>{{ $dolgozok->count() }}</td>
-                    </tr>
-                    <tr>
-                        <td>Havi cégkereslet</td>
-                        <td>1,200,000 HUF</td>
-                    </tr>
-                    <tr>
-                        <td>EUR-HUF valutaárfolyam</td>
-                        <td>387.45 HUF</td>
-                    </tr>
-                </tbody>
-            </table>
+
+        <p>---</p>
+
+        <div id="datumok">
+
+            <p id="jdatum">2000-01-01</p><br>
+
+            <p id="jido">10:00:00</p>
+
         </div>
+
+        <a href="#" id="fel"><img src="kepek/fel.PNG"></a>
+
+        <footer id="footer">
+            <a href="{{ url('/') }}">Főloldal</a> |
+            <a href="{{ url('/kapcsolat') }}">Kapcsolat</a> |
+            <a href="{{ url('/profil') }}">Profil</a> |
+            <a href="{{ url('/rolunk') }}">Rólunk</a> |
+            <a href="{{ url('/dolgozok') }}">Dolgozók</a>
+        </footer>
+
     </div>
-    <a href="#" id="felgomb">Vissza a tetejére</a>
-</div>
 
-<div id="also">
-    <a href="#">Adatvédelmi nyilatkozat</a>
-    <a href="#">Felhasználási feltételek</a>
-    <a href="#">Kapcsolat</a>
-</div>
+        <script>
 
-<script>
+            window.onload = function() 
+            {
+                if (sessionStorage.getItem("profilkep")) 
+                {
+                    document.getElementById("jprofil").src = sessionStorage.getItem("profilkep");
+                }
+            }
 
-    let profilkep = document.getElementById("profilkep");
+            let datum = new Date();
 
-    window.onload = function() 
-    {
-        let eleres = sessionStorage.getItem("profilkep");
-        if (eleres) 
-        {
-            profilkep.src = eleres;
-        }
-        kovetkezo();
-    };
+            let ev = datum.getFullYear();
+            let honap = datum.getMonth();
+            honap++;
+            let nap = datum.getDate();
 
-</script>
+            let jdatum = document.getElementById("jdatum");
+
+            jdatum.innerHTML = ev + "-" + honap + "-" + nap;
+
+            function ido()
+            {
+
+                let jido = document.getElementById("jido");
+
+                datum = new Date();
+
+                let ora = datum.getHours();
+                let perc = datum.getMinutes();
+                let mp = datum.getSeconds();
+
+                jido.innerHTML = ora + ":" + perc + ":" + mp;
+
+            }
+
+            setInterval(ido,1000);    
+
+        </script>
 
 </body>
+
 </html>

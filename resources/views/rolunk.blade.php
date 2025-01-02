@@ -1,235 +1,302 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
-    <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="kepek/icon.png">
-    <title>Rólunk</title>
+
+    <title>Comproller - Rólunk</title>
+
     <style>
 
-        body 
+        *
         {
-            font-family: Arial, sans-serif;
+
+            text-decoration: none;
+
+        }
+
+        #jprofil
+        {
+
+            border: none;
+            width: 100px;
+            height: 100px;
+            border-radius: 60px;
+            cursor: none;
+
+        }
+
+        #fel
+        {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            width: 20%;
+            padding: 20px;
+
+        }
+
+        #nav_logo
+        {
+
+            border: none;
+            width: 100px;
+            height: 100px;
+            border-radius: 60px;
+            cursor: none;
+
+        }
+
+        #nav_icon
+        {
+
+            width: 40px;
+            height: 40px;
+            border: 2px solid black;
+            border-radius: 60px;
+
+        }
+
+        body
+        {
+
+            background-image: url("kepek/hatterek/hatter.jpg");
+            background-repeat: no-repeat;
+            background-color: grey;
+            font-family: arial;
+            color: #36454F;
+
         }
 
         img
         {
 
-            width: 20%;
-            height: 20%;
-
-        }
-
-        #nav 
-        {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #007acc;
-            padding: 5px;
             border-radius: 30px;
-        }
-        #nav a 
-        {
-            color: white;
-            text-decoration: none;
-            padding: 5px 15px;
-        }
-        #nav a:hover 
-        {
-            background-color: #005f99;
+            width: 15%;
+            height: auto;
+            border: 2px solid black;
+            transition: transform 1.1;
+
         }
 
-        #profilkep       
+        img:hover
         {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            border: 2px solid white;
+
+            transform: scale(1.05);            
+
         }
 
-        #container 
+        #kozepre
         {
-            padding: 32px;
-            text-align: center;
-        }
 
-        h1 
-        {
-            color: #007acc;
-        }
-
-        .vetites 
-        {
-            width: 80%;
-            max-width: 600px;
-            margin: 16px auto;
-            border: 2px solid #007acc;
-            border-radius: 8px;
-        }
-
-        .vetites img 
-        {
-            width: 100%;
-            display: none;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .vetites img.aktiv
-        {
-            display: block;
-            opacity: 1;
-        }
-
-        #leiras 
-        {
-            color: #333;
-        }
-
-        #extra
-        {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 400px;
-            align-items: flex-start;
-            margin-top: 32px;
+            place-items: center;
+
         }
 
-        #extra img 
+        #leiras
         {
-            max-width: 300px;
-            border: 2px solid #007acc;
-            border-radius: 8px;
+
+            background-color: rgba(255, 255, 255, 0.623);
+            border-radius: 10px;
+            font-size: 20px;
+            padding: 10px;
+            display: grid;
+            justify-items: left;
+            align-items: left;
+            gap: 5px;
+
         }
 
-        #extra #szoveg 
+        nav,#footer
         {
-            max-width: 600px;
-            text-align: left;
-            margin-left: 32px;
+
+            background-color: rgba(255, 255, 255, 0.623);
+            border-radius: 10px;
+            font-size: 13px;
+            padding: 10px;
+
         }
 
-        #also
+        nav
         {
-            background-color: #007acc;
-            color: white;
-            padding: 16px;
+
+            width: 90%;
+            display:flex;
+            justify-content: space-between;
             text-align: center;
+
+        }
+
+        table
+        {
+
+            border: 2px solid black;
+
+        }
+
+        #jdatum,#jido
+        {
+
+            background-color:rgba(182, 208, 226, 0.47);
+            border-radius: 40px;
+
+        }
+
+        #datumok
+        {
+
+            background-image: url("kepek/datum.PNG");
+            width: 40%;
+            height: 60%;
+            text-align: center;
+            color: black;
+            border-radius: 10px;
+            font-size: 30px;
+            padding: 30px;
+            border: 2px solid black;
+
+        }
+
+        button
+        {
+
+            background-color: black;
             border-radius: 30px;
-        }
-
-        #also a 
-        {
+            opacity: 0.5;
             color: white;
-            text-decoration: none;
-            padding: 8px 16px;
-        }
-
-        #also a:hover 
-        {
-            background-color: #005f99;
-        }
-
-        #felgomb 
-        {
-            display: inline-block;
-            padding: 8px 16px;
-            background-color: #007acc;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
+            font-size: 20px;
             cursor: pointer;
-        }
+            padding: 15px;
 
-        #felgomb:hover 
-        {
-            background-color: #005f99;
         }
 
     </style>
+
 </head>
+
 <body>
 
-<nav id="nav">
-    <a href="{{ url('/') }}">Kezdőlap</a>
-    <a href="{{ url('/rolunk') }}">Rólunk</a>
-    <a href="{{ url('/kapcsolat') }}">Kapcsolat</a>
-    <a href="{{ url('/profil') }}">Profil</a>
-    <a href="{{ url('/dolgozok') }}">Dolgozók</a>
-    <div>
-        <img src="kepek/felhasznalo.JPG" id="profilkep">
-    </div>
-</nav>
-<div id="container">
-    <h1>Cég információk</h1>
-    <img src="kepek/icon.png">
-    <div id="leiras">
-        <p> Comproller egy vezető menedzsment tanácsadó cég, amely vállalatok megfigyelésére és irányítására specializálódott.
-    </div>
+    <div id="kozepre">
 
-    <div id="extra">
-        <div>
-            <div id="szoveg">
-                <h2>Szolgáltatásaink:</h2>
-                <p>
+        <nav>
+            <a><img src="kepek/nav_iconok/nav_logo.PNG" id="nav_logo"><br></a>
+            <a href="{{ url('/') }}"> <img src="kepek/nav_iconok/fooldal.png" id="nav_icon"><br>Főloldal</a> 
+            <a href="{{ url('/kapcsolat') }}"> <img src="kepek/nav_iconok/telefon.png" id="nav_icon"><br>Kapcsolat</a> 
+            <a href="{{ url('/profil') }}"> <img src="kepek/nav_iconok/profil.png" id="nav_icon"><br>Profil</a> 
+            <a href="{{ url('/rolunk') }}"> <img src="kepek/nav_iconok/rolunk.png" id="nav_icon"><br>Rólunk</a> 
+            <a href="{{ url('/dolgozok') }}"> <img src="kepek/nav_iconok/dolgozok.png" id="nav_icon"><br>Dolgozók</a>
+            <a><img src="kepek/nav_iconok/felhasznalo.PNG" id="jprofil"><br></a>
+        </nav>
 
-                    <b>Munkavállalói teljesítmény nyomon követése:</b><br>
+        <p>---</p>
 
+        <div id="leiras">
+
+            <h1>Szolgáltatásaink:</h1>
+            <p>
+
+                <b>Munkavállalói teljesítmény nyomon követése:</b><br>
+
+                <br>
+
+                <i>
+                    -Bérstruktúrák elemzése: Segítünk optimalizálni a bérstruktúrákat és biztosítani a versenyképes fizetéseket.<br>
                     <br>
-
-                    <i>
-                        -Bérstruktúrák elemzése: Segítünk optimalizálni a bérstruktúrákat és biztosítani a versenyképes fizetéseket.<br>
-                        <br>
-                        -Szervezeti hatékonyság növelése: Javítjuk a vállalati folyamatokat és struktúrákat a hatékonyság érdekében.<br>
-                        <br>
-                        -Változásmenedzsment: Támogatjuk a szervezeti változások sikeres végrehajtását és elfogadását.
-                    </i>           
-
-                </p>
-
-                    <br><b>Értékeink:</b><br>
-
+                    -Szervezeti hatékonyság növelése: Javítjuk a vállalati folyamatokat és struktúrákat a hatékonyság érdekében.<br>
                     <br>
+                    -Változásmenedzsment: Támogatjuk a szervezeti változások sikeres végrehajtását és elfogadását.
+                </i>           
 
-                    <i>
-                        -Innováció: Folyamatosan keressük az új és jobb megoldásokat.<br>
-                        <br>
-                        -Ügyfélközpontúság: Ügyfeleink igényei állnak minden tevékenységünk középpontjában.<br>
-                        <br>
-                        -Szakértelem: Magasan képzett szakembereink biztosítják a legjobb eredményeket.<br>
-                        <br>
-                        -Integritás: Minden tevékenységünkben a legmagasabb etikai normákat követjük.
-                    </i>
+            </p>
 
-                </p>
-            </div>
+                <br><b>Értékeink:</b><br>
+
+                <br>
+
+                <i>
+                    -Innováció: Folyamatosan keressük az új és jobb megoldásokat.<br>
+                    <br>
+                    -Ügyfélközpontúság: Ügyfeleink igényei állnak minden tevékenységünk középpontjában.<br>
+                    <br>
+                    -Szakértelem: Magasan képzett szakembereink biztosítják a legjobb eredményeket.<br>
+                    <br>
+                    -Integritás: Minden tevékenységünkben a legmagasabb etikai normákat követjük.
+                </i>
+
+            </p>
+
+            <img src="kepek/rolunkkep.PNG"><br>
+            <img src="kepek/rolunkkep2.PNG"><br>
+
         </div>
+
+        <p>---</p>
+
+        <div id="datumok">
+
+            <p id="jdatum">2000-01-01</p><br>
+
+            <p id="jido">10:00:00</p>
+
+        </div>
+
+        <a href="#" id="fel"><img src="kepek/fel.PNG"></a>
+
+        <footer id="footer">
+            <a href="{{ url('/') }}">Főloldal</a> |
+            <a href="{{ url('/kapcsolat') }}">Kapcsolat</a> |
+            <a href="{{ url('/profil') }}">Profil</a> |
+            <a href="{{ url('/rolunk') }}">Rólunk</a> |
+            <a href="{{ url('/dolgozok') }}">Dolgozók</a>
+        </footer>
+
     </div>
-    <a href="#" id="felgomb">Vissza a tetejére</a>
-</div>
 
-<div id="also">
-    <a href="#">Adatvédelmi nyilatkozat</a>
-    <a href="#">Felhasználási feltételek</a>
-    <a href="#">Kapcsolat</a>
-</div>
+        <script>
 
-<script>
+            window.onload = function() 
+            {
+                if (sessionStorage.getItem("profilkep")) 
+                {
+                    document.getElementById("jprofil").src = sessionStorage.getItem("profilkep");
+                }
+            }
 
-    let profilkep = document.getElementById("profilkep");
+            let datum = new Date();
 
-    window.onload = function() 
-    {
-        let eleres = sessionStorage.getItem("profilkep");
-        if (eleres) 
-        {
-            profilkep.src = eleres;
-        }
-        kovetkezo();
-    };
+            let ev = datum.getFullYear();
+            let honap = datum.getMonth();
+            honap++;
+            let nap = datum.getDate();
 
-</script>
+            let jdatum = document.getElementById("jdatum");
+
+            jdatum.innerHTML = ev + "-" + honap + "-" + nap;
+
+            function ido()
+            {
+
+                let jido = document.getElementById("jido");
+
+                datum = new Date();
+
+                let ora = datum.getHours();
+                let perc = datum.getMinutes();
+                let mp = datum.getSeconds();
+
+                jido.innerHTML = ora + ":" + perc + ":" + mp;
+
+            }
+
+            setInterval(ido,1000);    
+
+        </script>
 
 </body>
+
 </html>

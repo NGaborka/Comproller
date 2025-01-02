@@ -1,377 +1,445 @@
 <!DOCTYPE html>
 <html lang="hu">
+
+
 <head>
-    <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="kepek/icon.png">
-    <title>Comproller</title>
+
+    <title>Comproller - Főoldal</title>
+
     <style>
 
-        body 
+        *
         {
-            font-family: Arial, sans-serif;
+
+            text-decoration: none;
+
         }
 
-        #nav 
+        #fel
         {
+
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            background-color: #007acc;
-            padding: 5px;
-            border-radius: 30px;
-        }
-        #nav a 
-        {
-            color: white;
-            text-decoration: none;
-            padding: 5px 15px;
-        }
-        #nav a:hover 
-        {
-            background-color: #005f99;
-        }
-
-        #profilkep       
-        {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            border: 2px solid white;
-        }
-
-        #container 
-        {
-            padding: 32px;
-            text-align: center;
-        }
-
-        h1 
-        {
-            color: #007acc;
-        }
-
-        .vetites 
-        {
-            width: 80%;
-            max-width: 600px;
-            margin: 16px auto;
-            border: 2px solid #007acc;
-            border-radius: 8px;
-        }
-
-        .vetites img 
-        {
-            width: 100%;
-            display: none;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .vetites img.aktiv
-        {
-            display: block;
-            opacity: 1;
-        }
-
-        #leiras 
-        {
-            color: #333;
-        }
-
-        #extra
-        {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 400px;
-            align-items: flex-start;
-            margin-top: 32px;
-        }
-
-        #extra img 
-        {
-            max-width: 300px;
-            border: 2px solid #007acc;
-            border-radius: 8px;
-        }
-
-        #extra #szoveg 
-        {
-            max-width: 600px;
-            text-align: left;
-            margin-left: 32px;
-        }
-
-        #also
-        {
-            background-color: #007acc;
-            color: white;
-            padding: 16px;
-            text-align: center;
-            border-radius: 30px;
-        }
-
-        #also a 
-        {
-            color: white;
-            text-decoration: none;
-            padding: 8px 16px;
-        }
-
-        #also a:hover 
-        {
-            background-color: #005f99;
-        }
-
-        #felgomb 
-        {
-            display: inline-block;
-            padding: 8px 16px;
-            background-color: #007acc;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
             cursor: pointer;
-        }
-
-        #felgomb:hover 
-        {
-            background-color: #005f99;
-        }
-
-        #naptar_container 
-        {
-            max-width: 600px;
-            margin: 32px auto;
+            width: 20%;
             padding: 20px;
-            background-color: white;
-            border: 2px solid #007acc;
-            border-radius: 8px;
+
         }
 
-        #naptar_fejlec 
+        #jprofil
         {
+
+            border: none;
+            width: 100px;
+            height: 100px;
+            border-radius: 60px;
+            cursor: none;
+
+        }
+
+        #nav_logo
+        {
+
+            border: none;
+            width: 100px;
+            height: 100px;
+            border-radius: 60px;
+            cursor: none;
+
+        }
+
+        #nav_icon
+        {
+
+            width: 40px;
+            height: 40px;
+            border: 2px solid black;
+            border-radius: 60px;
+
+        }
+
+        body
+        {
+
+            background-image: url("kepek/hatterek/hatter.jpg");
+            background-repeat: no-repeat;
+            background-color: #36454F;
+            font-family: arial;
+            color: #000080;
+
+        }
+
+        img
+        {
+
+            border-radius: 30px;
+            width: 15%;
+            height: auto;
+            border: 2px solid black;
+            transition: transform 1.1;
+
+        }
+
+        img:hover
+        {
+
+            transform: scale(1.05);            
+
+        }
+
+        #kozepre
+        {
+
+            display: grid;
+            place-items: center;
+
+        }
+
+        #cegkepek
+        {
+
+            padding: 10px;
+            gap: 10px;
+            width: 80%;
+            height: 80%;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            margin-bottom: 20px;
+            cursor: none;
+
         }
 
-        #naptar_tabla 
+        #leiras,nav,#footer
         {
-            width: 100%;
-            border-collapse: collapse;
-        }
 
-        #naptar_tabla th 
-        {
-            background-color: #007acc;
-            color: white;
+            background-color: rgba(255, 255, 255, 0.623);
+            border-radius: 10px;
+            font-size: 13px;
             padding: 10px;
+
         }
 
-        #naptar_tabla td 
+        #koszontes
         {
+
+            gap: 10px;
+            background-image: url("kepek/ceglogo.PNG");
+            background-repeat: no-repeat;
+            background-color: rgba(255, 255, 255, 0.800);
+            background-blend-mode: overlay;
+            border-radius: 10px;
             padding: 10px;
+            cursor: none;
+            color: #36454F;
+            border: 2px solid black;
+
+        }
+
+        nav
+        {
+
+            width: 90%;
+            display:flex;
+            justify-content: space-between;
             text-align: center;
-            border: 1px solid #ddd;
+
         }
 
-        #naptar_tabla td:hover 
+        #epuletid
         {
-            background-color: #f0f0f0;
-            cursor: pointer;
+
+            width: 600px;
+            height: 600px;
+            cursor: none;
+
         }
 
-        .aktualis_nap 
+        table
         {
-            background-color: #007acc;
+
+            border: 2px solid black;
+
+        }
+
+        #jdatum,#jido
+        {
+
+            background-color:rgba(182, 208, 226, 0.47);
+            border-radius: 40px;
+
+        }
+
+        #datumok
+        {
+
+            background-image: url("kepek/datum.PNG");
+            width: 40%;
+            height: 60%;
+            text-align: center;
+            color: black;
+            border-radius: 10px;
+            font-size: 30px;
+            padding: 30px;
+            border: 2px solid black;
+
+        }
+
+        button
+        {
+
+            background-color: black;
+            border-radius: 30px;
+            opacity: 0.7;
             color: white;
-            border-radius: 50%;
-        }
+            font-size: 20px;
+            cursor: pointer;
+            padding: 15px;
 
-        .masik_honap 
-        {
-            color: #999;
         }
 
     </style>
+
 </head>
+
 <body>
 
-<nav id="nav">
-    <a href="{{ url('/') }}">Kezdőlap</a>
-    <a href="{{ url('/rolunk') }}">Rólunk</a>
-    <a href="{{ url('/kapcsolat') }}">Kapcsolat</a>
-    <a href="{{ url('/profil') }}">Profil</a>
-    <a href="{{ url('/dolgozok') }}">Dolgozók</a>
-    <div>
-        <img src="kepek/felhasznalo.JPG" id="profilkep">
-    </div>
-</nav>
-<div id="container">
-    <h1>Üdvözöljük a Comproller oldalján!</h1>
-    <p>Ez az oldal segít a cég menedzselésében és a fontos információk kezelésében.</p>
-    <div class="vetites">
-        <img src="kepek/kep1.jpg" class="aktiv"> 
-        <img src="kepek/kep2.jpg">
-        <img src="kepek/kep3.jpg">
-    </div>
-    <div id="leiras">
-        <p>Itt találhatók a legfrissebb hírek és információk a cégünkről. Maradjon naprakész a legújabb fejlesztésekkel és eseményekkel kapcsolatban.</p>
-    </div>
+    <div id="kozepre">
 
-    <div id="extra">
+        <nav>
+            <a><img src="kepek/nav_iconok/nav_logo.PNG" id="nav_logo"><br></a>
+            <a href="{{ url('/') }}"> <img src="kepek/nav_iconok/fooldal.png" id="nav_icon"><br>Főloldal</a> 
+            <a href="{{ url('/kapcsolat') }}"> <img src="kepek/nav_iconok/telefon.png" id="nav_icon"><br>Kapcsolat</a> 
+            <a href="{{ url('/profil') }}"> <img src="kepek/nav_iconok/profil.png" id="nav_icon"><br>Profil</a> 
+            <a href="{{ url('/rolunk') }}"> <img src="kepek/nav_iconok/rolunk.png" id="nav_icon"><br>Rólunk</a> 
+            <a href="{{ url('/dolgozok') }}"> <img src="kepek/nav_iconok/dolgozok.png" id="nav_icon"><br>Dolgozók</a>
+            <a><img src="kepek/nav_iconok/felhasznalo.PNG" id="jprofil"><br></a>
+        </nav>
+
+        <p>---</p>
+
+        <div id="koszontes">
+
+            <i>
+            <h1>Comproller</h1><br>
+
+            <h2></h2>
+
+            <h2>Köszöntünk a Comproller vállalat oldalán!</h2>
+            </i>
+
+        </div>
+
+        <p>---</p>
+
         <div>
-            <img src="kepek/ceg.jpg">
-            <div id="szoveg">
-                <h2>Cégünk története</h2>
-                <p>Cégünk több mint 20 éve van jelen a piacon, és elkötelezettek vagyunk a minőségi szolgáltatások nyújtása iránt. Innovatív megoldásainkkal és szakértő csapatunkkal segítjük ügyfeleinket a siker elérésében.</p>
-                <p>Folyamatosan fejlődünk és bővítjük szolgáltatásainkat, hogy megfeleljünk a változó piaci igényeknek. Célunk, hogy hosszú távú, sikeres együttműködést alakítsunk ki partnereinkkel.</p>
-            </div>
+
+            <button type="button" onclick="elvesz()">Előző</button>
+
+                <img src="kepek/emberek/1.PNG" id="epuletid">
+
+            <button type="button" onclick="hozzaad()">Következő</button>
+
         </div>
-        <div>
-            <img src="kepek/leiras.jpg">
-            <div id="szoveg">
-                <h2>Megbízhatóságunk</h2>
-                <p>Cégünk egyik legfontosabb értéke a megbízhatóság. Mindig arra törekszünk, hogy ügyfeleink elvárásainak megfeleljünk, és biztosítsuk számukra a legmagasabb szintű szolgáltatást.</p>
-                <p>Proaktív szemléletmóddal és precíz munkavégzéssel dolgozunk, hogy hosszú távú, eredményes kapcsolatokat alakítsunk ki ügyfeleinkkel.</p>
-            </div>
+
+        <div id="cegkepek">
+
+            <img src="kepek/1.PNG">
+            <img src="kepek/2.PNG">
+            <img src="kepek/3.PNG">
+
         </div>
+
+        <div id="leiras">
+
+            <h3>Cégünk története<h3><br>
+            <p>Cégünk több mint 20 éve van jelen a piacon, és elkötelezettek vagyunk a minőségi szolgáltatások nyújtása iránt. Innovatív megoldásainkkal és szakértő csapatunkkal segítjük ügyfeleinket a siker elérésében.<br>
+            Folyamatosan fejlődünk és bővítjük szolgáltatásainkat, hogy megfeleljünk a változó piaci igényeknek. Célunk, hogy hosszú távú, sikeres együttműködést alakítsunk ki partnereinkkel.</p><br>
+
+            <img src="kepek/leiras1.PNG"><br>
+
+            <h3>Megbízhatóságunk</h3><br>
+            <p>Cégünk egyik legfontosabb értéke a megbízhatóság. Mindig arra törekszünk, hogy ügyfeleink elvárásainak megfeleljünk, és biztosítsuk számukra a legmagasabb szintű szolgáltatást.<br>
+            Proaktív szemléletmóddal és precíz munkavégzéssel dolgozunk, hogy hosszú távú, eredményes kapcsolatokat alakítsunk ki ügyfeleinkkel.</p><br>
+
+            <img src="kepek/leiras2.PNG">
+
+        </div>
+
+        <p>---</p>
+
+        <div id="datumok">
+
+            <p id="jdatum">2000-01-01</p><br>
+
+            <p id="jido">10:00:00</p>
+
+        </div>
+
+        <a href="#" id="fel"><img src="kepek/fel.PNG"></a>
+
+        <footer id="footer">
+            <a href="{{ url('/') }}">Főloldal</a> |
+            <a href="{{ url('/kapcsolat') }}">Kapcsolat</a> |
+            <a href="{{ url('/profil') }}">Profil</a> |
+            <a href="{{ url('/rolunk') }}">Rólunk</a> |
+            <a href="{{ url('/dolgozok') }}">Dolgozók</a>
+        </footer>
+
     </div>
 
-    <div id="naptar_container">
-        <div id="naptar_fejlec">
-            <button onclick="honap_valt(-1)">Előző</button>
-            <h2 id="aktualis_datum"></h2>
-            <button onclick="honap_valt(1)">Következő</button>
-        </div>
-        <table id="naptar_tabla">
-            <thead>
-                <tr>
-                    <th>H</th>
-                    <th>K</th>
-                    <th>Sze</th>
-                    <th>Cs</th>
-                    <th>P</th>
-                    <th>Szo</th>
-                    <th>V</th>
-                </tr>
-            </thead>
-            <tbody id="naptar_body">
-            </tbody>
-        </table>
-    </div>
+        <script>
 
-    <a href="#" id="felgomb">Vissza a tetejére</a>
-</div>
-
-<div id="also">
-    <a href="#">Adatvédelmi nyilatkozat</a>
-    <a href="#">Felhasználási feltételek</a>
-    <a href="#">Kapcsolat</a>
-</div>
-
-<script>
-
-    let profilkep = document.getElementById("profilkep");
-
-    window.onload = function() 
-    {
-        let eleres = sessionStorage.getItem("profilkep");
-        if (eleres) 
-        {
-            profilkep.src = eleres;
-        }
-        kovetkezo();
-        naptar_inditas();
-    };
-
-    let jelenlegi = 0;
-    let kepek = document.querySelectorAll('.vetites img');
-    function kovetkezo()   
-    {
-        kepek[jelenlegi].classList.remove('aktiv');
-        jelenlegi = (jelenlegi + 1) % kepek.length;
-        kepek[jelenlegi].classList.add('aktiv');
-    }
-
-    setInterval(kovetkezo, 3000);
-
-    let aktualis_datum = new Date();
-    let kivalasztott_datum = aktualis_datum;
-
-    function naptar_inditas() 
-    {
-        naptar_frissites();
-    }
-
-    function naptar_frissites() 
-    {
-        let datum_kijelzo = document.getElementById('aktualis_datum');
-        datum_kijelzo.textContent = `${kivalasztott_datum.getFullYear()}. ${kivalasztott_datum.getMonth() + 1}. hónap`;
-
-        let naptar_body = document.getElementById('naptar_body');
-        naptar_body.innerHTML = '';
-
-        let elso_nap = new Date(kivalasztott_datum.getFullYear(), kivalasztott_datum.getMonth(), 1);
-        let utolso_nap = new Date(kivalasztott_datum.getFullYear(), kivalasztott_datum.getMonth() + 1, 0);
-
-        let aktualis_sor = document.createElement('tr');
-        let nap_szam = 1;
-        let elso_nap_index = elso_nap.getDay() || 7;
-
-        for (let i = 1; i < elso_nap_index; i++) 
-        {
-            let ures_cella = document.createElement('td');
-            let elozo_honap_utolso = new Date(kivalasztott_datum.getFullYear(), kivalasztott_datum.getMonth(), 0);
-            let elozo_nap = elozo_honap_utolso.getDate() - (elso_nap_index - i - 1);
-            ures_cella.textContent = elozo_nap;
-            ures_cella.classList.add('masik_honap');
-            aktualis_sor.appendChild(ures_cella);
-        }
-
-        while (nap_szam <= utolso_nap.getDate()) 
-        {
-            if (aktualis_sor.children.length === 7) 
+            window.onload = function() 
             {
-                naptar_body.appendChild(aktualis_sor);
-                aktualis_sor = document.createElement('tr');
+                if (sessionStorage.getItem("profilkep")) 
+                {
+                    document.getElementById("jprofil").src = sessionStorage.getItem("profilkep");
+                }
             }
 
-            let nap_cella = document.createElement('td');
-            nap_cella.textContent = nap_szam;
+            let datum = new Date();
 
-            if (kivalasztott_datum.getFullYear() === aktualis_datum.getFullYear() &&
-                kivalasztott_datum.getMonth() === aktualis_datum.getMonth() &&
-                nap_szam === aktualis_datum.getDate()) 
+            let ev = datum.getFullYear();
+            let honap = datum.getMonth();
+            honap++;
+            let nap = datum.getDate();
+
+            let jdatum = document.getElementById("jdatum");
+
+            jdatum.innerHTML = ev + "-" + honap + "-" + nap;
+
+            let epuletid = document.getElementById("epuletid");
+            let kepindex = 0;
+
+            let manualis = false;
+
+            function valtas()
             {
-                nap_cella.classList.add('aktualis_nap');
+
+                epuletid = document.getElementById("epuletid");                
+
+                if (kepindex == 0)
+                {
+
+                    epuletid.src = "kepek/emberek/1.PNG";
+                    
+                }
+                else if (kepindex == 1)
+                {
+
+                    epuletid.src = "kepek/emberek/2.PNG";
+
+                }
+                else if (kepindex == 2)
+                {
+
+                    epuletid.src = "kepek/emberek/3.PNG";
+
+                }
+
             }
 
-            aktualis_sor.appendChild(nap_cella);
-            nap_szam++;
-        }
+            function auto()
+            {
 
-        let kovetkezo_honap_nap = 1;
-        while (aktualis_sor.children.length < 7) 
-        {
-            let ures_cella = document.createElement('td');
-            ures_cella.textContent = kovetkezo_honap_nap++;
-            ures_cella.classList.add('masik_honap');
-            aktualis_sor.appendChild(ures_cella);
-        }
+                if (manualis == true)
+                {
 
-        naptar_body.appendChild(aktualis_sor);
-    }
+                    kepindex = 0;
+                    manualis = false;
+                    
+                }
 
-    function honap_valt(lepes) 
-    {
-        kivalasztott_datum = new Date(kivalasztott_datum.getFullYear(), kivalasztott_datum.getMonth() + lepes, 1);
-        naptar_frissites();
-    }
+                epuletid = document.getElementById("epuletid");                
 
-</script>
+                if (kepindex == 0)
+                {
+
+                    epuletid.src = "kepek/emberek/1.PNG";
+
+                    kepindex++;
+                    
+                }
+                else if (kepindex == 1)
+                {
+
+                    epuletid.src = "kepek/emberek/2.PNG";
+
+                    kepindex++;
+
+                }
+                else if (kepindex == 2)
+                {
+
+                    epuletid.src = "kepek/emberek/3.PNG";
+
+                    kepindex = 0;
+
+                }
+
+            }
+
+            function ido()
+            {
+
+                let jido = document.getElementById("jido");
+
+                datum = new Date();
+
+                let ora = datum.getHours();
+                let perc = datum.getMinutes();
+                let mp = datum.getSeconds();
+
+                jido.innerHTML = ora + ":" + perc + ":" + mp;
+
+            }
+
+            let auto_valtas = setInterval(auto,4000);
+
+            function elvesz()
+            {
+            
+                if (kepindex != 0)
+                {
+                    kepindex--;
+                }
+
+                valtas();
+
+                clearInterval(auto_valtas);
+
+                auto_valtas = setInterval(auto,4000);
+
+                manualis = true;
+
+            }
+
+            function hozzaad()
+            {
+
+                if (kepindex != 2)
+                {
+                    kepindex++;
+                }
+
+                valtas();
+
+                clearInterval(auto_valtas);
+
+                auto_valtas = setInterval(auto,4000);
+
+                manualis = true;
+
+            }
+
+            setInterval(ido,1000);          
+
+        </script>
 
 </body>
+
 </html>
